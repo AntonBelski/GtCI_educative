@@ -26,8 +26,6 @@ def min_meeting_rooms(intervals):
 
 
 def main():
-    print("Minimum meeting rooms required: " + str(min_meeting_rooms(
-        [Meeting(4, 5), Meeting(2, 3), Meeting(2, 4), Meeting(3, 5)])))
     print("Minimum meeting rooms required: " +
           str(min_meeting_rooms([Meeting(1, 4), Meeting(2, 5), Meeting(7, 9)])))
     print("Minimum meeting rooms required: " +
