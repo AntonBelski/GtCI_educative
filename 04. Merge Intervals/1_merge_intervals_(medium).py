@@ -11,25 +11,16 @@ class Interval:
 
 
 def merge(intervals):
-    results = []
-    intervals.sort(key=lambda k: k.start)
+    pairs = sorted(intervals, key=lambda k: k.start)
+    result = [pairs[0]]
 
-    start = intervals[0].start
-    end = intervals[0].end
-
-    for interval in intervals[1:]:
-        curr_start = interval.start
-        curr_end = interval.end
-        if curr_start > end:
-            results.append(Interval(start, end))
-            start = curr_start
-            end = curr_end
+    for pair in pairs[1:]:
+        if result[-1].end >= pair.start:
+            result[-1].end = max(result[-1].end, pair.end)
         else:
-            end = max(end, curr_end)
+            result.append(pair)
 
-    results.append(Interval(start, end))
-
-    return results
+    return result
 
 
 def main():
