@@ -1,20 +1,20 @@
-def merge(intervals_a, intervals_b):
-    results = []
-    i, j = 0, 0
+def merge(fl, sl):
+    result = []
+    p1, p2 = 0, 0
 
-    while i < len(intervals_a) and j < len(intervals_b):
-        lo = max(intervals_a[i][0], intervals_b[j][0])
-        hi = min(intervals_a[i][1], intervals_b[j][1])
+    while p1 < len(fl) and p2 < len(sl):
+        max_start = max(fl[p1][0], sl[p2][0])
+        min_end = min(fl[p1][1], sl[p2][1])
 
-        if lo <= hi:
-            results.append([lo, hi])
+        if min_end >= max_start:
+            result.append([max_start, min_end])
 
-        if intervals_a[i][1] < intervals_b[j][1]:
-            i += 1
+        if fl[p1][1] > sl[p2][1]:
+            p2 += 1
         else:
-            j += 1
+            p1 += 1
 
-    return results
+    return result
 
 
 def main():
