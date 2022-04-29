@@ -1,18 +1,13 @@
 def search_next_letter(letters, key):
-    lo = 0
-    hi = len(letters) - 1
-
+    lo, hi = 0, len(letters)
     while lo != hi:
         mid = (lo + hi) // 2
-        if key >= letters[mid]:
-            lo = mid + 1
-        else:
+        if key < letters[mid]:
             hi = mid
+        else:
+            lo = mid + 1
 
-    if letters[lo] > key:
-        return letters[lo]
-    else:
-        return letters[0]
+    return letters[lo % len(letters)]
 
 
 def main():
