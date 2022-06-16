@@ -19,7 +19,7 @@ class TreeDiameter:
             return max(left_path, right_path) + 1
 
         dfs(root)
-        return self.max_diameter
+        return self.max_diameter + 1
 
 
 def main():
